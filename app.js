@@ -83,7 +83,7 @@ function authorize(service_name, client_id, response_type, scope, provision_key,
 /*
   The route that shows the authorization page
 */
-app.get('/oauth2/authorize', function (req, res) {
+app.get('/authorize', function (req, res) {
   var querystring = url.parse(req.url, true).query;
   get_application_name(querystring.client_id, function (application_name) {
     if (application_name) {
@@ -107,7 +107,7 @@ app.get('/oauth2/authorize', function (req, res) {
   The route that handles the form submit, that will
   authorize the client application and redirect the user
 */
-app.post('/oauth2/authorize', function (req, res) {
+app.post('/authorize', function (req, res) {
   authorize(req.body.service_name, req.body.client_id, req.body.response_type, req.body.scope, req.body.provision_key, req.body.authenticated_userid, function (redirect_uri) {
     res.redirect(redirect_uri);
   });
@@ -116,7 +116,7 @@ app.post('/oauth2/authorize', function (req, res) {
 /*
   Get OAuth2 token
 */
-app.post('/oauth2/token', function (req, res) {
+app.post('/token', function (req, res) {
   let body = req.body;
   axios({
 		method: 'post',
@@ -142,7 +142,7 @@ app.post('/oauth2/token', function (req, res) {
   Index page
 */
 
-app.get("/oauth2", function (req, res) {
+app.get("/", function (req, res) {
   res.render('index');
 });
 
