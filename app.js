@@ -32,7 +32,7 @@ var KONG_API = process.env["KONG_API"] || "https://kong:8443";
   The scopes that we support, with their extended
   description for a nicer frontend user experience
 */
-var SCOPE_DESCRIPTIONS = process.env["SCOPES"] ? JSON.parse(process.env["SCOPES"]) : { email: "Grant permissions to read your email address" };
+var SCOPE_DESCRIPTIONS = process.env["SCOPES"] ? JSON.parse(process.env["SCOPES"]) : { read: "Grant permissions to read the resources", write: "Grant permissions to write the resources", delete: "Grant permissions to delete the resources" };
 
 /* 
   The port the authorization server listens on. Defaults to 3301.
